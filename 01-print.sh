@@ -1,6 +1,6 @@
 #!/bin/bash
 
-student_name="bachi"
+student_name="rash"
 
 echo $student_name
 
