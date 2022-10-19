@@ -11,4 +11,6 @@ DATE=$(date +%F)
 
 echo today date is $DATE
 
+EXPR=$((3*7/9+65/85%9))
+echo calculate = $EXPR
 
