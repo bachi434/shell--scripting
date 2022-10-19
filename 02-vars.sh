@@ -9,5 +9,6 @@ echo ${student_name}
 
 DATE=$(date +%F)
 
-today date is $DATE
+echo today date is $DATE
+
 
