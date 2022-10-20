@@ -9,3 +9,7 @@ fi
 if [ $a != abc ]; then
   echo NOT OK
   fi
+
+if [ -z $b ]; then
+  echo b is empty  / not declared varaible
+  fi
