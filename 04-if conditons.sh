@@ -3,6 +3,6 @@
 ### string expressions
 
 a=abc
-if [ $a = abc ]; then
+if [ $a = "abc" ]; then
   echo ok
 fi
