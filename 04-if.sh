@@ -13,3 +13,7 @@ if [ $a != abc ]; then
 if [ -z $b ]; then
   echo b is empty  / not declared varaible
   fi
+a=200
+if [ $a -eq 200 ]; then
+  echo a is OK
+  fi
