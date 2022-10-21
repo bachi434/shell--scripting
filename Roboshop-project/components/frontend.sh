@@ -31,6 +31,8 @@ echo installing frontend
 #
 #Finally restart the service once to effect the changes.
 
+rm -f /tmp/roboshop.log
+
 echo "Installing Nginx"
 yum install nginx -y >>/tmp/roboshop.log
 
