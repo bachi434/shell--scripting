@@ -34,23 +34,27 @@ echo installing frontend
 rm -f /tmp/roboshop.log
 
 echo "Installing Nginx"
-yum install nginx -y >>/tmp/roboshop.log
+yum install nginx -y &>>/tmp/roboshop.log
+
 
 echo "downloading frontend content"
  curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" >>/tmp/roboshop.log
 
 echo "clean old content"
-rm -rf /usr/share/nginx/html/* &>>/tmp/roboshop.log
+rm -rf /usr/share/nginx/html/*  &>>/tmp/roboshop.log
 
 echo "extract frontend content"
-unzip -o /tmp/frontend.zip &>>/tmp/roboshop.log
+cd /tmp
+unzip -o frontend.zip  &>>/tmp/roboshop.log
+
 
 
 echo "copy extracted content to Nginx file"
-mv frontend-main/static/* .
-mv frontend-main/localhost/.conf /etc/nginx/default.d/roboshop.conf &>>/tmp/roboshop.log
+cp -r frontend-main/static/* /usr/share/nginx/html/ &>>/tmp/roboshop.log
 
 
+echo "copy Nginx roboshop config"
+cp frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf &>>/tmp/roboshop.log
 
 echo "start Nginx service"
 syastemctl enable nginx &>>/tmp/roboshop.log
