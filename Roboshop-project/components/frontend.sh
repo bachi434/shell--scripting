@@ -1,65 +1,39 @@
 echo installing frontend
 
-#The frontend is the service in RobotShop to serve the web content over Nginx.
-#
-#To Install Nginx.
-#
-#```
-## yum install nginx -y
-## systemctl enable nginx
-## systemctl start nginx
-#
-#```
-#
-#Let's download the HTDOCS content and deploy under the Nginx path.
-#
-#```
-## curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip"
-#
-#```
-#
-#Deploy the downloaded content in Nginx Default Location.
-#
-#```
-## cd /usr/share/nginx/html
-## rm -rf *
-## unzip /tmp/frontend.zip
-## mv frontend-main/static/* .
-## mv frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf
-#
-#```
-#
-#Finally restart the service once to effect the changes.
 
-rm -f /tmp/roboshop.log
+LOG_FILE=/tmp/roboshop.log
+rm -f $LOG_FILE
+
+
 
 echo "Installing Nginx"
-yum install nginx -y &>>/tmp/roboshop.log
+yum install nginx -y &>>$LOG_FILE
+
 
 
 echo "downloading frontend content"
- curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" >>/tmp/roboshop.log
+ curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" &>>$LOG_FILE
 
 echo "clean old content"
-rm -rf /usr/share/nginx/html/*  &>>/tmp/roboshop.log
+rm -rf /usr/share/nginx/html/*  &>>$LOG_FILE
+
 
 echo "extract frontend content"
 cd /tmp
-unzip -o frontend.zip  &>>/tmp/roboshop.log
-
+unzip -o frontend.zip  &>>$LOG_FILE
 
 
 echo "copy extracted content to Nginx file"
-cp -r frontend-main/static/* /usr/share/nginx/html/ &>>/tmp/roboshop.log
+cp -r frontend-main/static/* /usr/share/nginx/html/ &>>$LOG_FILE
 
 
 echo "copy Nginx roboshop config"
-cp frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf &>>/tmp/roboshop.log
+cp frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf &>>$LOG_FILE
 
 echo "start Nginx service"
 
-systemctl enable nginx &>>/tmp/roboshop.log
-systemctl start nginx &>>/tmp/roboshop.log
+systemctl enable nginx &>>$LOG_FILE
+systemctl start nginx &>>$LOG_FILE
 
 
 
