@@ -57,8 +57,10 @@ echo "copy Nginx roboshop config"
 cp frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf &>>/tmp/roboshop.log
 
 echo "start Nginx service"
-syastemctl enable nginx &>>/tmp/roboshop.log
-sysytemctl start nginx &>>/tmp/roboshop.log
+
+syastemctl start nginx &>>/tmp/roboshop.log
+sysytemctl enable nginx &>>/tmp/roboshop.log
+
 
 
 
