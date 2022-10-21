@@ -33,3 +33,6 @@ echo installing frontend
 
 echo "Installing Nginx"
 yum install nginx -y >/tmp/roboshop.log
+
+echo "downloading frontend content"
+ curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" >/tmp/rosboshop.log
