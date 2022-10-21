@@ -38,3 +38,12 @@ yum install nginx -y >>/tmp/roboshop.log
 
 echo "downloading frontend content"
  curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" >>/tmp/roboshop.log
+
+echo "clean old content"
+rm -rf /usr/share/nginx/html* >>/tmp/roboshop.log
+
+echo "extract frontend content"
+cd /usr/share/nginx/html >>/tmp/roboshop.log
+unzip /tmp/frontend.zip >>/tmp/roboshop.log
+
+
