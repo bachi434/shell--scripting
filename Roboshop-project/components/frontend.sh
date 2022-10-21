@@ -43,7 +43,7 @@ echo "clean old content"
 rm -rf /usr/share/nginx/html/* &>>/tmp/roboshop.log
 
 echo "extract frontend content"
-unzip /tmp/frontend.zip &>>/tmp/roboshop.log
+unzip -o /tmp/frontend.zip &>>/tmp/roboshop.log
 
 
 echo "copy extracted content to Nginx file"
