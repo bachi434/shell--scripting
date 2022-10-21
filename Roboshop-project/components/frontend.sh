@@ -40,10 +40,27 @@ echo "downloading frontend content"
  curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" >>/tmp/roboshop.log
 
 echo "clean old content"
-rm -rf /usr/share/nginx/html* >>/tmp/roboshop.log
+rm -rf /usr/share/nginx/html/* &>>/tmp/roboshop.log
 
 echo "extract frontend content"
-cd /usr/share/nginx/html >>/tmp/roboshop.log
-unzip /tmp/frontend.zip >>/tmp/roboshop.log
+cd /tmp
+unzip /frontend.zip &>>/tmp/roboshop.log
+
+echo "copy extracted content to Nginx file"
+cp -r frontend-main/static/* /usr/share/nginx/html/ &>>/tmp/roboshop.log
+
+echo "copy Nginx Roboshop config"
+cp frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf &>>/tmp/roboshop.log
+
+echo "start Nginx service"
+syastemctl enable nginx &>>/tmp/roboshop.log
+sysytemctl start nginx &>>/tmp/roboshop.log
+
+
+
+
+
+
+
 
 
