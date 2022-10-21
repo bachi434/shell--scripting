@@ -58,8 +58,8 @@ cp frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf &>>/tmp/robos
 
 echo "start Nginx service"
 
-syastemctl start nginx &>>/tmp/roboshop.log
-sysytemctl enable nginx &>>/tmp/roboshop.log
+systemctl enable nginx &>>/tmp/roboshop.log
+systemctl start nginx &>>/tmp/roboshop.log
 
 
 
