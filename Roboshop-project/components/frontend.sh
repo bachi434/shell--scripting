@@ -3,13 +3,11 @@ source components/common.sh
 
 
 echo "Installing Nginx"
-yum install nginx -y &>>$LOG_FILE
-
+yum install nginxxx -y &>>$LOG_FILE
 if [ $? -eq 0 ]; then
-
-  echo -e "\e[1;31m SUCCESS\e[0m"
+ echo -e "\e[1;31m SUCCESS\e[0m"
   else
-  echo -e "\e[1;31m FAILED\e[0m"
+ echo -e "\e[1;31m FAILED\e[0m"
   exit
 
   fi
