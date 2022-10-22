@@ -3,7 +3,7 @@ source components/common.sh
 
 
 echo "Installing Nginx"
-yum install nginxxx -y &>>$LOG_FILE
+yum install nginx -y &>>$LOG_FILE
 if [ $? -eq 0 ]; then
  echo -e "\e[1;31m SUCCESS\e[0m"
   else
