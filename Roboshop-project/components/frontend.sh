@@ -9,8 +9,9 @@ if [ $? -eq 0 ]; then
   else
  echo -e "\e[1;31m FAILED\e[0m"
   exit
+fi
 
-  fi
+
 
 
 
