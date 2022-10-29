@@ -30,20 +30,20 @@ curl -L https://raw.githubusercontent.com/roboshop-devops-project/redis/main/red
 STAT $?
 
 echo "Install Redis"
-yum install redis-6.2.7 -y &>>LOG_FILE
+yum install redis-6.2.7 -y &>>$LOG_FILE
 STAT $?
 
 echo "Update redis configuration"
 if [ -f /etc/redis.conf ]; then
-sed -i -e "s/120.0.0.1/0.0.0.0/g" /etc/redis.conf &>>LOG_FILE
+sed -i -e "s/120.0.0.1/0.0.0.0/g" /etc/redis.conf &>>$LOG_FILE
 elif [ -f /etc/redis/redis.conf ]; then
-  sed -i -e "s/120.0.0.1/0.0.0.0/g" /etc/redis.conf &>>LOG_FILE
+  sed -i -e "s/120.0.0.1/0.0.0.0/g" /etc/redis.conf &>>$LOG_FILE
   fi
 STAT $?
 
 echo "Start Redis"
 systemcyl enable redis
-systemctl start redis &>>LOG_FILE
+systemctl start redis &>>$LOG_FILE
 STAT $?
 
 
