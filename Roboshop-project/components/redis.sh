@@ -42,7 +42,7 @@ elif [ -f /etc/redis/redis.conf ]; then
 STAT $?
 
 echo "Start Redis"
-systemcyl enable redis
+systemctl enable redis
 systemctl start redis &>>$LOG_FILE
 STAT $?
 
