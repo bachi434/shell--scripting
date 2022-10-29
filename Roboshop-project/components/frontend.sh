@@ -4,10 +4,8 @@ source components/common.sh
 
 echo "Installing Nginx"
 yum install nginx -y &>>$LOG_FILE
+
 STAT $?
-
-
-
 
 
 
